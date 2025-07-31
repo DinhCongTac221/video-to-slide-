@@ -95,7 +95,8 @@ def detect_unique_screenshots(video_path, output_folder_screenshot_path):
 
 def initialize_output_folder(video_path):
     '''Clean the output folder if already exists'''
-    output_folder_screenshot_path = f"{OUTPUT_SLIDES_DIR}/{video_path.rsplit('/')[-1].split('.')[0]}"
+    base_filename = os.path.splitext(os.path.basename(video_path))[0]
+    output_folder_screenshot_path = os.path.join(OUTPUT_SLIDES_DIR, base_filename)
 
     if os.path.exists(output_folder_screenshot_path):
         shutil.rmtree(output_folder_screenshot_path)
